@@ -5,6 +5,7 @@ import (
 	"aMolinariCom/goRest/controllers"
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +16,10 @@ func main() {
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
+
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"}
+	r.Use(cors.New(config))
 
 	r.GET("ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, "pong")
@@ -28,6 +33,5 @@ func setupRouter() *gin.Engine {
 	r.GET("/users/:id", userRepo.GetUser)
 	r.PUT("/users/:id", userRepo.UpdateUser)
 	r.DELETE("/users/:id", userRepo.DeleteUser)
-
 	return r
 }
