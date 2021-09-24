@@ -4,10 +4,10 @@ Cerco di creare delle REST API in go.
 
 ## Get Started
 
-```bash
+```sh
 go run main.go
 ```
 
-```bash
+```sh
 go build main.go
 ```
