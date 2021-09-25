@@ -37,13 +37,13 @@ func (repository *UserRepo) CreateUser(c *gin.Context) {
 
 //get users
 func (repository *UserRepo) GetUsers(c *gin.Context) {
-	var user []models.User
-	err := models.GetUsers(repository.Db, &user)
+	var users []models.User
+	err := models.GetUsers(repository.Db, &users)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
 	}
-	c.JSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, users)
 }
 
 //get user by id

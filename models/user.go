@@ -23,7 +23,7 @@ func CreateUser(db *gorm.DB, User *User) (err error) {
 
 //get users
 func GetUsers(db *gorm.DB, User *[]User) (err error) {
-	err = db.Find(User).Error
+	err = db.Order("id desc, name").Find(User).Error
 	if err != nil {
 		return err
 	}
