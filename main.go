@@ -25,7 +25,9 @@ func setupRouter() *gin.Engine {
 		c.JSON(http.StatusOK, "pong")
 	})
 
-	userRepo := controllers.New()
+	userRepo := controllers.User()
+	anagraficaRepo := controllers.Anagrafica()
+
 	r.POST("/login", userRepo.Login)
 
 	r.POST("/users", userRepo.CreateUser)
@@ -33,5 +35,12 @@ func setupRouter() *gin.Engine {
 	r.GET("/users/:id", userRepo.GetUser)
 	r.PUT("/users/:id", userRepo.UpdateUser)
 	r.DELETE("/users/:id", userRepo.DeleteUser)
+
+	r.GET("/anagrafica", anagraficaRepo.GetAnagrafiche)
+	r.POST("/anagrafica", anagraficaRepo.CreateAnagrafica)
+	r.PUT("/anagrafica/:id", anagraficaRepo.UpdateAnagrafica)
+	r.GET("/anagrafica/:id", anagraficaRepo.GetAnagrafica)
+	r.DELETE("/anagrafica/:id", anagraficaRepo.DeleteAnagrafica)
+
 	return r
 }

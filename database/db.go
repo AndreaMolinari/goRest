@@ -7,11 +7,11 @@ import (
 	"gorm.io/gorm"
 )
 
-const DB_USERNAME = "root"
-const DB_PASSWORD = "recordRootDb7"
-const DB_NAME = "godb"
+const DB_USERNAME = "aMolinariCom"
+const DB_PASSWORD = "_imatto_"
+const DB_NAME = "api"
 const DB_HOST = "127.0.0.1"
-const DB_PORT = "3307"
+const DB_PORT = "3306"
 
 var Db *gorm.DB
 
@@ -27,7 +27,7 @@ func connectDB() *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		fmt.Println("Error connecting to database : error=%v", err)
+		fmt.Printf("Error connecting to database : error=%v", err)
 		return nil
 	}
 

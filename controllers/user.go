@@ -17,7 +17,7 @@ type UserRepo struct {
 	Db *gorm.DB
 }
 
-func New() *UserRepo {
+func User() *UserRepo {
 	db := database.InitDb()
 	db.AutoMigrate(&models.User{})
 	return &UserRepo{Db: db}
